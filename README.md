@@ -114,3 +114,36 @@ systemctl daemon-reload
 ## Updating the CS:GO Server
 
 Eventually updates need to be applied to the server. If that's the case, we need to to the same steps as installation. So just running `steamcmd +runscript $STEAM_DIR/steamcmd_csgo.txt` should do the trick.
+
+## Installing Plugins
+
+We should generally want Metamod and Sourcemod plugins - and then other extra extensions such as RankMe or Retake.
+
+**Important**: careful with file permissions. Always ensure that everything belongs to `steam` user, e.g: `sudo chown -R steam:steam /home/steam/.steam/steamcmd/cs_go/csgo`. If there are permission issues the plugins may not be loaded and error messages are not clear enough.
+
+### Installing Metamod
+
+* Follow instructions on https://wiki.alliedmods.net/Installing_Metamod:Source. It's basically downloading the zip or tar file and unzipping it to the addons dir. A `cp -r` on the directory should make it get merged with existing one. 
+
+For a reference, content of `metamod.vdf` file on a working server was:
+
+```
+"Plugin"
+{
+	"file"	"../csgo/addons/metamod/bin/server"
+}
+```
+
+### Installing Sourcemod
+
+* Follow the Sourcemod part here: https://wiki.alliedmods.net/Installing_SourceMod_(simple)
+* It's as easy as unpackaging the file into csgo root folder. It contains a `cfg` and an `addons` folder which should be merged into existing csgo root folder (again with `cp -r`). 
+
+### Installing Sourcemod plugins
+
+To install sourcemod plugins it's a matter of extracting the content into the `sourcemod` folder, such as `/home/steam/.steam/steamcmd/cs_go/csgo/addons/sourcemod`, unless the plugin documentation says otherwise. Again, need to ensure the files belong to `steam` user.
+
+* https://github.com/rogeraabbccdd/Kento-Rankme
+* https://github.com/splewis/csgo-retakes
+* https://github.com/splewis/csgo-pug-setup
+* 
