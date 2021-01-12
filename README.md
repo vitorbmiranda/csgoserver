@@ -146,4 +146,3 @@ To install sourcemod plugins it's a matter of extracting the content into the `s
 * https://github.com/rogeraabbccdd/Kento-Rankme
 * https://github.com/splewis/csgo-retakes
 * https://github.com/splewis/csgo-pug-setup
-* 
