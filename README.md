@@ -11,9 +11,9 @@ Go to `Compute Engine > VM Instances > Create Instance`.
 * Zone: doesn't really matter here
 * Machine Configuration: a suitable instance type. Smallest ones are under N1 sries.
 * Boot disk: Ubuntu 20.04 LTS
-* Boot disk type: Increase boot size to at least 50GB
+* Boot disk type: Standard persistence disk (cheaper) -> Increase boot size to at least 50GB
 
-Within the sidebar menu, go to `Networking > VPC Network > External IP Address` (or use search bar).
+Within the sidebar menu, go to `Networking > VPC Network > External IP Address` (or use search bar looking for `VPC`).
 
 * Easiest way is clicking on `Ephemeral` under the `Type` column and change to `Static`. This will bind the existing address to an external one.
 * Another option is creating a new Static Address and manually attaching to the instance.
@@ -74,6 +74,9 @@ echo "quit" >> $STEAM_DIR/steamcmd_csgo.txt
 
 # run the script
 steamcmd +runscript $STEAM_DIR/steamcmd_csgo.txt
+
+# in case it fails, put something to automatically retry it, e.g:
+while true; do steamcmd +runscript $STEAM_DIR/steamcmd_csgo.txt; done
 
 ```
 
