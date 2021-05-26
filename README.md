@@ -116,7 +116,18 @@ systemctl daemon-reload
 
 ## Updating the CS:GO Server
 
-Eventually updates need to be applied to the server. If that's the case, we need to to the same steps as installation. So just running `steamcmd +runscript $STEAM_DIR/steamcmd_csgo.txt` should do the trick.
+Eventually updates need to be applied to the server. If that's the case, you can set up something like this on crontab, in a sh file (e.g: updatecsgo.sh):
+
+```
+#!/bin/bash
+set -x
+sudo service hlds stop
+sleep 5
+sudo su - steam -c 'steamcmd +runscript /home/steam/steamcmd_csgo.txt'
+sudo service hlds start
+```
+
+Then this can be added to crontab (`crontab -e`), e.g: `0 4 * * * /home/vitorbmiranda/updatecsgo.sh > /var/log/csgo/updatecsgo.log`
 
 ## Installing Plugins
 
