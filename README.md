@@ -121,10 +121,10 @@ Eventually updates need to be applied to the server. If that's the case, you can
 ```
 #!/bin/bash
 set -x
-sudo service hlds stop
+sudo service csgo stop
 sleep 5
 sudo su - steam -c 'steamcmd +runscript /home/steam/steamcmd_csgo.txt'
-sudo service hlds start
+sudo service csgo start
 ```
 
 Then this can be added to crontab (`crontab -e`), e.g: `0 4 * * * /home/vitorbmiranda/updatecsgo.sh > /var/log/csgo/updatecsgo.log`
